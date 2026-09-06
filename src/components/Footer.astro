@@ -1,4 +1,6 @@
 ---
+import { socials } from "../lib/socials";
+
 const repo = "https://github.com/Kevin25DC/karina-token";
 const year = new Date().getFullYear();
 ---
@@ -15,6 +17,19 @@ const year = new Date().getFullYear();
           Monitor de consumo de IA en tiempo casi real, local-first, para escritorio.
           Construida con Go, Wails y React.
         </p>
+        <div class="mt-5 flex items-center gap-2">
+          {socials.map((s) => (
+            <a
+              href={s.href}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={s.label}
+              class={`flex h-9 w-9 items-center justify-center rounded-full border border-border text-muted transition-colors ${s.hover} hover:border-white/25`}
+            >
+              <svg viewBox="0 0 24 24" width="16" height="16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" set:html={s.icon} />
+            </a>
+          ))}
+        </div>
       </div>
 
       <div>

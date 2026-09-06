@@ -1,0 +1,35 @@
+---
+const repo = "https://github.com/Kevin25DC/karina-token";
+---
+
+<section class="mx-auto max-w-6xl px-6 pb-28">
+  <div class="reveal relative overflow-hidden rounded-3xl border border-border p-12 text-center sm:p-16">
+    <div class="absolute inset-0 -z-10 bg-[linear-gradient(120deg,#1bd1f8,#055bec_35%,#6853dc_65%,#f3815d)] bg-[length:220%_220%] opacity-90 [animation:drift-a_16s_ease-in-out_infinite]"></div>
+    <div class="absolute inset-0 -z-10 bg-ink/55"></div>
+
+    <h2 class="text-3xl font-extrabold tracking-tight text-white sm:text-4xl">
+      Empieza a monitorear tu consumo de IA hoy
+    </h2>
+    <p class="mx-auto mt-4 max-w-xl text-white/80">
+      Gratis y de código abierto. Descarga el instalador de Windows o compílala tú mismo para macOS y Linux.
+    </p>
+    <div class="mt-8 flex flex-col items-center justify-center gap-4 sm:flex-row">
+      <a
+        href={`${repo}/releases/latest`}
+        target="_blank"
+        rel="noreferrer"
+        class="w-full rounded-full bg-white px-7 py-3.5 text-sm font-semibold text-ink transition-transform hover:scale-[1.03] sm:w-auto"
+      >
+        Descargar última versión
+      </a>
+      <a
+        href={repo}
+        target="_blank"
+        rel="noreferrer"
+        class="w-full rounded-full border border-white/30 px-7 py-3.5 text-sm font-medium text-white transition-colors hover:bg-white/10 sm:w-auto"
+      >
+        Ver el repositorio
+      </a>
+    </div>
+  </div>
+</section>

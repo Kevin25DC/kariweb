@@ -1,0 +1,62 @@
+---
+const features = [
+  {
+    title: "Tiempo (casi) real",
+    desc: "Polling configurable, 10s a 5m, con backoff exponencial ante errores. Sé amable con las APIs.",
+    icon: "M13 2 3 14h9l-1 8 10-12h-9l1-8Z",
+  },
+  {
+    title: "Rate limits en vivo",
+    desc: "Lee los headers reales de cada proveedor (anthropic-ratelimit-*, x-ratelimit-*) sin inventar nada.",
+    icon: "M22 12h-4l-3 9L9 3l-3 9H2",
+  },
+  {
+    title: "Historial local",
+    desc: "Snapshots reales guardados en tu equipo, sin nube. Gráficos por día, 7 y 30 días.",
+    icon: "M3 3v18h18___M18 17V9___M13 17V5___M8 17v-3",
+  },
+  {
+    title: "Alertas por umbral",
+    desc: "Umbral configurable (85% por defecto): un aviso antes de golpear el límite, no después.",
+    icon: "M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9___M10.3 21a1.94 1.94 0 0 0 3.4 0",
+  },
+  {
+    title: "Exportar historial",
+    desc: "CSV con las observaciones crudas o PDF con resumen y gráfico, listo para archivar.",
+    icon: "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4___M7 10l5 5 5-5___M12 15V3",
+  },
+  {
+    title: "Seguridad primero",
+    desc: "Las API keys viven en el keyring del sistema operativo. Nunca en logs, config o el frontend.",
+    icon: "M20 13c0 5-3.5 7.5-7.5 9-.5.17-1.5.17-2 0C6.5 20.5 3 18 3 13V6a1 1 0 0 1 1-1c2 0 4.5-1.2 6.24-2.72a1.17 1.17 0 0 1 1.52 0C13.5 3.8 16 5 18 5a1 1 0 0 1 1 1z___M9 12l2 2 4-4",
+  },
+];
+---
+
+<section id="features" class="mx-auto max-w-6xl px-6 py-28">
+  <div class="mx-auto max-w-2xl text-center">
+    <h2 class="reveal text-3xl font-bold tracking-tight sm:text-4xl">
+      Todo lo que necesitas para <span class="text-gradient">no pasarte de tu límite</span>
+    </h2>
+    <p class="reveal mt-4 text-muted" style="transition-delay: 80ms">
+      Sin backend propio, sin telemetría de terceros. Karina habla directo con cada proveedor.
+    </p>
+  </div>
+
+  <div class="mt-16 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+    {features.map((f, i) => (
+      <div
+        class="reveal glow-border card-border rounded-2xl p-6 transition-transform duration-300 hover:-translate-y-1"
+        style={`transition-delay: ${i * 70}ms`}
+      >
+        <div class="btn-gradient mb-5 flex h-10 w-10 items-center justify-center rounded-xl">
+          <svg viewBox="0 0 24 24" width="19" height="19" fill="none" stroke="#05060a" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            {f.icon.split("___").map((d) => <path d={d} />)}
+          </svg>
+        </div>
+        <h3 class="text-lg font-semibold text-text">{f.title}</h3>
+        <p class="mt-2 text-sm leading-relaxed text-muted">{f.desc}</p>
+      </div>
+    ))}
+  </div>
+</section>

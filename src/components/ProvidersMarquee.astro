@@ -1,0 +1,27 @@
+---
+const providers = [
+  { name: "Anthropic Claude", dot: "bg-orange" },
+  { name: "Claude Code (Suscripción)", dot: "bg-orange" },
+  { name: "OpenAI", dot: "bg-[#10a37f]" },
+  { name: "Google Gemini", dot: "bg-blue" },
+  { name: "DeepSeek", dot: "bg-cyan" },
+];
+const loop = [...providers, ...providers];
+---
+
+<section id="providers" class="border-y border-border/70 bg-surface/30 py-10">
+  <p class="reveal mb-7 text-center text-xs font-medium uppercase tracking-[0.2em] text-muted">
+    Compatible con los proveedores que ya usas
+  </p>
+
+  <div class="group relative overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_10%,black_90%,transparent)]">
+    <div class="animate-marquee flex w-max gap-4 group-hover:[animation-play-state:paused]">
+      {loop.map((p) => (
+        <span class="flex shrink-0 items-center gap-2 rounded-full border border-border bg-surface px-5 py-2.5 text-sm text-muted">
+          <span class={`h-1.5 w-1.5 rounded-full ${p.dot}`}></span>
+          {p.name}
+        </span>
+      ))}
+    </div>
+  </div>
+</section>

@@ -1,0 +1,45 @@
+---
+const repo = "https://github.com/Kevin25DC/karina-token";
+const year = new Date().getFullYear();
+---
+
+<footer class="border-t border-border">
+  <div class="mx-auto max-w-6xl px-6 py-14">
+    <div class="grid gap-10 sm:grid-cols-[1.4fr_1fr_1fr]">
+      <div>
+        <a href="#top" class="flex items-center gap-2.5">
+          <img src="/logo-icon.png" alt="Karina" class="h-8 w-8 rounded-[9px]" />
+          <span class="text-[15px] font-semibold tracking-tight text-text">Karina</span>
+        </a>
+        <p class="mt-4 max-w-xs text-sm leading-relaxed text-muted">
+          Monitor de consumo de IA en tiempo casi real, local-first, para escritorio.
+          Construida con Go, Wails y React.
+        </p>
+      </div>
+
+      <div>
+        <p class="text-xs font-medium uppercase tracking-wider text-muted">Producto</p>
+        <ul class="mt-4 space-y-3 text-sm">
+          <li><a href="#features" class="text-muted transition-colors hover:text-text">Funciones</a></li>
+          <li><a href="#showcase" class="text-muted transition-colors hover:text-text">Capturas</a></li>
+          <li><a href="#how" class="text-muted transition-colors hover:text-text">Cómo funciona</a></li>
+          <li><a href={`${repo}/releases`} target="_blank" rel="noreferrer" class="text-muted transition-colors hover:text-text">Descargas</a></li>
+        </ul>
+      </div>
+
+      <div>
+        <p class="text-xs font-medium uppercase tracking-wider text-muted">Proyecto</p>
+        <ul class="mt-4 space-y-3 text-sm">
+          <li><a href={repo} target="_blank" rel="noreferrer" class="text-muted transition-colors hover:text-text">Código fuente</a></li>
+          <li><a href={`${repo}/issues`} target="_blank" rel="noreferrer" class="text-muted transition-colors hover:text-text">Reportar un problema</a></li>
+          <li><a href={`${repo}/releases`} target="_blank" rel="noreferrer" class="text-muted transition-colors hover:text-text">Changelog</a></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="mt-12 flex flex-col items-center justify-between gap-4 border-t border-border pt-8 text-xs text-muted/80 sm:flex-row">
+      <p>© {year} Karina. Hecho por Kevin.</p>
+      <p>Go · Wails v2 · React · Astro</p>
+    </div>
+  </div>
+</footer>

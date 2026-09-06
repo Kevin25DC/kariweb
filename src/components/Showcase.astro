@@ -1,0 +1,97 @@
+---
+const tabs = [
+  { id: "dashboard", label: "Panel", file: "/screenshots/dashboard.jpeg", desc: "Estado de conexión, % de uso y ventanas de tiempo por proveedor, de un vistazo." },
+  { id: "historial", label: "Historial", file: "/screenshots/historial.jpeg", desc: "Gráficos por día, 7 y 30 días, construidos con snapshots reales." },
+  { id: "proveedores", label: "Añadir proveedor", file: "/screenshots/proveedores.jpeg", desc: "Conecta Anthropic, OpenAI, Gemini o el proveedor demo en segundos." },
+  { id: "ajustes", label: "Ajustes", file: "/screenshots/ajustes.jpeg", desc: "Intervalo de refresco, autoinicio, widget compacto y directorio de datos." },
+  { id: "widget", label: "Widget", file: "/screenshots/widget.jpeg", desc: "Modo compacto siempre visible, fijo en una esquina de tu pantalla." },
+];
+---
+
+<section id="showcase" class="mx-auto max-w-6xl px-6 py-28">
+  <div class="mx-auto max-w-2xl text-center">
+    <h2 class="reveal text-3xl font-bold tracking-tight sm:text-4xl">La app, por dentro</h2>
+    <p class="reveal mt-4 text-muted" style="transition-delay: 80ms">Capturas reales de Karina corriendo en Windows.</p>
+  </div>
+
+  <div class="reveal mt-14" style="transition-delay: 120ms">
+    <div id="showcase-tabs" class="relative mx-auto mb-8 flex max-w-full flex-wrap justify-center gap-1 overflow-x-auto rounded-full border border-border bg-surface p-1">
+      {tabs.map((t, i) => (
+        <button
+          type="button"
+          data-tab={t.id}
+          class:list={["tab-btn relative z-10 whitespace-nowrap rounded-full px-4 py-2 text-sm transition-colors", i === 0 ? "text-ink" : "text-muted hover:text-text"]}
+          aria-pressed={i === 0}
+        >
+          {t.label}
+        </button>
+      ))}
+      <div id="tab-indicator" class="btn-gradient absolute left-1 top-1 h-[calc(100%-8px)] rounded-full transition-all duration-300 ease-out"></div>
+    </div>
+
+    <div class="glow-border card-border overflow-hidden rounded-2xl p-1.5 shadow-2xl shadow-black/50">
+      <div class="flex items-center gap-1.5 rounded-t-xl bg-surface-2 px-4 py-2.5">
+        <span class="h-2.5 w-2.5 rounded-full bg-[#ff5f57]"></span>
+        <span class="h-2.5 w-2.5 rounded-full bg-[#febc2e]"></span>
+        <span class="h-2.5 w-2.5 rounded-full bg-[#28c840]"></span>
+        <span id="tab-caption" class="ml-2 truncate text-xs text-muted">{tabs[0].desc}</span>
+      </div>
+      <div class="relative aspect-[1470/968] w-full bg-surface-2">
+        {tabs.map((t, i) => (
+          <img
+            src={t.file}
+            data-panel={t.id}
+            alt={`Captura de Karina: ${t.label}`}
+            class:list={["absolute inset-0 h-full w-full rounded-b-lg object-cover transition-opacity duration-500", i === 0 ? "opacity-100" : "opacity-0"]}
+            loading="lazy"
+          />
+        ))}
+      </div>
+    </div>
+  </div>
+</section>
+
+<script define:vars={{ tabs: tabs.map((t) => ({ id: t.id, desc: t.desc })) }}>
+  const buttons = Array.from(document.querySelectorAll(".tab-btn"));
+  const panels = Array.from(document.querySelectorAll("[data-panel]"));
+  const indicator = document.getElementById("tab-indicator");
+  const caption = document.getElementById("tab-caption");
+
+  function place(btn) {
+    if (!indicator) return;
+    indicator.style.width = `${btn.offsetWidth}px`;
+    indicator.style.transform = `translateX(${btn.offsetLeft - 4}px)`;
+  }
+
+  function activate(id, { instant = false } = {}) {
+    const btn = buttons.find((b) => b.dataset.tab === id);
+    if (!btn) return;
+    buttons.forEach((b) => {
+      const active = b === btn;
+      b.classList.toggle("text-ink", active);
+      b.classList.toggle("text-muted", !active);
+      b.setAttribute("aria-pressed", String(active));
+    });
+    panels.forEach((p) => {
+      p.classList.toggle("opacity-100", p.dataset.panel === id);
+      p.classList.toggle("opacity-0", p.dataset.panel !== id);
+    });
+    const meta = tabs.find((t) => t.id === id);
+    if (caption && meta) caption.textContent = meta.desc;
+    if (instant) {
+      indicator.style.transitionDuration = "0ms";
+      place(btn);
+      requestAnimationFrame(() => (indicator.style.transitionDuration = ""));
+    } else {
+      place(btn);
+    }
+  }
+
+  buttons.forEach((btn) => btn.addEventListener("click", () => activate(btn.dataset.tab)));
+  window.addEventListener("resize", () => {
+    const current = buttons.find((b) => b.getAttribute("aria-pressed") === "true");
+    if (current) activate(current.dataset.tab, { instant: true });
+  });
+
+  requestAnimationFrame(() => activate(buttons[0]?.dataset.tab, { instant: true }));
+</script>

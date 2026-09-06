@@ -1,0 +1,77 @@
+---
+const repo = "https://github.com/Kevin25DC/karina-token";
+---
+
+<section id="top" class="relative overflow-hidden pt-40 pb-28 sm:pt-48 sm:pb-36">
+  <!-- blobs -->
+  <div class="pointer-events-none absolute inset-0 -z-10 overflow-hidden">
+    <div class="animate-drift-a absolute -top-24 left-[8%] h-[26rem] w-[26rem] rounded-full bg-violet/30 blur-[110px]"></div>
+    <div class="animate-drift-b absolute top-[-6rem] right-[6%] h-[24rem] w-[24rem] rounded-full bg-cyan/25 blur-[110px]"></div>
+    <div class="absolute left-1/2 top-40 h-[20rem] w-[36rem] -translate-x-1/2 rounded-full bg-orange/10 blur-[130px]"></div>
+    <div class="noise absolute inset-0 opacity-40"></div>
+  </div>
+
+  <div class="mx-auto flex max-w-4xl flex-col items-center px-6 text-center">
+    <a
+      href={`${repo}/releases`}
+      target="_blank"
+      rel="noreferrer"
+      class="reveal mb-7 inline-flex items-center gap-2 rounded-full border border-border bg-surface/60 px-4 py-1.5 text-xs text-muted backdrop-blur"
+    >
+      <span class="h-1.5 w-1.5 rounded-full bg-cyan"></span>
+      v0.6.0 · código abierto en GitHub
+    </a>
+
+    <h1 class="reveal text-4xl font-extrabold tracking-tight text-text sm:text-6xl" style="transition-delay: 60ms">
+      El consumo de tus IA,
+      <br class="hidden sm:block" />
+      <span class="text-gradient"> visible en tiempo real</span>
+    </h1>
+
+    <p class="reveal mt-6 max-w-2xl text-balance text-lg leading-relaxed text-muted" style="transition-delay: 120ms">
+      Karina es una app de escritorio <strong class="text-text">local-first</strong> que monitorea
+      Claude, OpenAI, Gemini y DeepSeek: rate limits en vivo, historial local y alertas antes de
+      llegar al límite. Datos reales, nunca inventados.
+    </p>
+
+    <div class="reveal mt-9 flex flex-col items-center gap-4 sm:flex-row" style="transition-delay: 180ms">
+      <a
+        href={`${repo}/releases/latest`}
+        target="_blank"
+        rel="noreferrer"
+        class="btn-gradient w-full rounded-full px-7 py-3.5 text-sm font-semibold text-ink shadow-[0_0_40px_-10px_rgba(27,209,248,0.6)] transition-transform hover:scale-[1.03] sm:w-auto"
+      >
+        Descargar para Windows
+      </a>
+      <a
+        href={repo}
+        target="_blank"
+        rel="noreferrer"
+        class="flex w-full items-center justify-center gap-2 rounded-full border border-border px-7 py-3.5 text-sm font-medium text-text transition-colors hover:border-white/25 hover:bg-white/5 sm:w-auto"
+      >
+        <svg viewBox="0 0 24 24" width="16" height="16" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.08 3.29 9.39 7.86 10.91.57.1.78-.25.78-.55 0-.27-.01-1.17-.02-2.12-3.2.7-3.88-1.36-3.88-1.36-.52-1.33-1.28-1.68-1.28-1.68-1.04-.72.08-.7.08-.7 1.15.08 1.76 1.18 1.76 1.18 1.03 1.75 2.7 1.25 3.36.96.1-.75.4-1.25.73-1.54-2.55-.29-5.23-1.28-5.23-5.68 0-1.25.45-2.28 1.18-3.08-.12-.29-.51-1.46.11-3.04 0 0 .96-.31 3.15 1.18a10.9 10.9 0 0 1 5.74 0c2.19-1.49 3.15-1.18 3.15-1.18.62 1.58.23 2.75.11 3.04.73.8 1.18 1.83 1.18 3.08 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.08.78 2.17 0 1.57-.01 2.83-.01 3.22 0 .3.2.66.79.55A10.52 10.52 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+        Ver el código
+      </a>
+    </div>
+    <p class="reveal mt-4 text-xs text-muted/80" style="transition-delay: 220ms">
+      Windows listo para instalar · macOS y Linux compilables desde el código fuente
+    </p>
+  </div>
+
+  <div class="reveal mx-auto mt-20 max-w-4xl px-6" style="transition-delay: 260ms">
+    <div class="animate-float mx-auto max-w-3xl">
+      <div class="glow-border card-border overflow-hidden rounded-2xl p-1.5 shadow-2xl shadow-black/50">
+        <div class="flex items-center gap-1.5 rounded-t-xl bg-surface-2 px-4 py-2.5">
+          <span class="h-2.5 w-2.5 rounded-full bg-[#ff5f57]"></span>
+          <span class="h-2.5 w-2.5 rounded-full bg-[#febc2e]"></span>
+          <span class="h-2.5 w-2.5 rounded-full bg-[#28c840]"></span>
+        </div>
+        <img
+          src="/screenshots/dashboard.jpeg"
+          alt="Panel principal de Karina mostrando el consumo de DeepSeek y la suscripción de Claude"
+          class="w-full rounded-b-lg"
+        />
+      </div>
+    </div>
+  </div>
+</section>

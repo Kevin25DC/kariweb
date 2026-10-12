@@ -5,13 +5,20 @@ const providers = [
   { name: "OpenAI", dot: "bg-[#10a37f]" },
   { name: "Google Gemini", dot: "bg-blue" },
   { name: "DeepSeek", dot: "bg-cyan" },
+  { name: "OpenRouter", dot: "bg-violet" },
+  { name: "xAI (Grok)", dot: "bg-muted" },
+  { name: "Mistral", dot: "bg-orange" },
+  { name: "Groq", dot: "bg-[#10a37f]" },
+  { name: "Codex CLI", dot: "bg-[#10a37f]" },
+  { name: "Gemini CLI", dot: "bg-blue" },
+  { name: "OpenCode", dot: "bg-cyan" },
 ];
 const loop = [...providers, ...providers];
 ---
 
 <section id="providers" class="border-y border-border/70 bg-surface/30 py-10">
   <p class="reveal mb-7 text-center text-xs font-medium uppercase tracking-[0.2em] text-muted">
-    Compatible con los proveedores que ya usas
+    Compatible con los proveedores y agentes que ya usas
   </p>
 
   <div class="group relative overflow-hidden [mask-image:linear-gradient(90deg,transparent,black_10%,black_90%,transparent)]">

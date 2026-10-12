@@ -1,13 +1,43 @@
 ---
 const features = [
   {
-    title: "Tiempo (casi) real",
-    desc: "Polling configurable, 10s a 5m, con backoff exponencial ante errores. Sé amable con las APIs.",
-    icon: "M13 2 3 14h9l-1 8 10-12h-9l1-8Z",
+    title: "Costo por cliente",
+    desc: "Agrupa tus proyectos por cliente, uno a uno o por carpeta, y mira cuánto consume cada uno en tokens y en dólares estimados.",
+    icon: "M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2___M9 11a4 4 0 1 0 0-8 4 4 0 0 0 0 8___M22 21v-2a4 4 0 0 0-3-3.87___M16 3.13a4 4 0 0 1 0 7.75",
   },
   {
-    title: "Rate limits en vivo",
-    desc: "Lee los headers reales de cada proveedor (anthropic-ratelimit-*, x-ratelimit-*) sin inventar nada.",
+    title: "Horas automáticas",
+    desc: "Karina calcula el tiempo que trabajaste con tus agentes en cada proyecto y cliente, sin cronómetro.",
+    icon: "M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20___M12 6v6l4 2",
+  },
+  {
+    title: "Rentabilidad y presupuestos",
+    desc: "Pon tu tarifa por hora y un tope mensual por cliente: verás lo facturable, el margen tras el costo de IA y un aviso al 80 %.",
+    icon: "M12 2v20___M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6",
+  },
+  {
+    title: "Reporte para el cliente",
+    desc: "PDF y CSV por cliente y periodo, con horas, proyectos y costo estimado. Listo para entregar.",
+    icon: "M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z___M14 2v6h6___M8 13h8___M8 17h8",
+  },
+  {
+    title: "Todos tus agentes de código",
+    desc: "Lee los registros locales de Claude Code, Codex CLI, Gemini CLI y OpenCode, y los suma por proyecto. Sin APIs de por medio.",
+    icon: "M4 17l6-6-6-6___M12 19h8",
+  },
+  {
+    title: "Widget con mascota",
+    desc: "Una isla flotante que se despliega al pasar el cursor. Kari, la mascota, cambia de ánimo según tu consumo y tú eliges qué proveedor sigue.",
+    icon: "M12 22a10 10 0 1 0 0-20 10 10 0 0 0 0 20___M8 14s1.5 2 4 2 4-2 4-2___M9 9h.01___M15 9h.01",
+  },
+  {
+    title: "¿Te conviene tu plan?",
+    desc: "Compara lo que pagas por tu suscripción de Claude con lo que ese mismo uso habría costado en la API.",
+    icon: "M12 3v18___M5 7h14___M5 7l-3 7a4 4 0 0 0 6 0z___M19 7l-3 7a4 4 0 0 0 6 0z",
+  },
+  {
+    title: "Límites en vivo",
+    desc: "Ventanas de 5 horas y semanal de Claude, y los rate limits reales de cada API leídos de sus cabeceras.",
     icon: "M22 12h-4l-3 9L9 3l-3 9H2",
   },
   {
@@ -16,14 +46,14 @@ const features = [
     icon: "M3 3v18h18___M18 17V9___M13 17V5___M8 17v-3",
   },
   {
-    title: "Alertas por umbral",
-    desc: "Umbral configurable (85% por defecto): un aviso antes de golpear el límite, no después.",
-    icon: "M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9___M10.3 21a1.94 1.94 0 0 0 3.4 0",
+    title: "Ocho proveedores, un panel",
+    desc: "Anthropic, OpenAI, Gemini, DeepSeek, OpenRouter, xAI, Mistral y Groq. Si un proveedor no publica un dato, Karina lo dice en vez de inventarlo.",
+    icon: "M12 2 2 7l10 5 10-5-10-5___M2 17l10 5 10-5___M2 12l10 5 10-5",
   },
   {
-    title: "Exportar historial",
-    desc: "CSV con las observaciones crudas o PDF con resumen y gráfico, listo para archivar.",
-    icon: "M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4___M7 10l5 5 5-5___M12 15V3",
+    title: "Alertas por umbral",
+    desc: "Aviso de Windows o macOS, y por webhook a Slack o Discord, antes de golpear el límite, no después.",
+    icon: "M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9___M10.3 21a1.94 1.94 0 0 0 3.4 0",
   },
   {
     title: "Seguridad primero",
@@ -36,7 +66,7 @@ const features = [
 <section id="features" class="mx-auto max-w-6xl px-6 py-28">
   <div class="mx-auto max-w-2xl text-center">
     <h2 class="reveal text-3xl font-bold tracking-tight sm:text-4xl">
-      Todo lo que necesitas para <span class="text-gradient">no pasarte de tu límite</span>
+      Cuánto gastas en IA, <span class="text-gradient">y para quién</span>
     </h2>
     <p class="reveal mt-4 text-muted" style="transition-delay: 80ms">
       Sin backend propio, sin telemetría de terceros. Karina habla directo con cada proveedor.

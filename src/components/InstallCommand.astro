@@ -1,0 +1,101 @@
+---
+// Comando de instalación de una línea, con pestañas por sistema operativo.
+// Los scripts viven en el repo de la app (scripts/install.ps1 y install.sh).
+const raw = "https://raw.githubusercontent.com/Kevin25DC/karina-token/main/scripts";
+const options = [
+  {
+    id: "windows",
+    label: "Windows",
+    shell: "PowerShell",
+    prompt: ">",
+    command: `irm ${raw}/install.ps1 | iex`,
+  },
+  {
+    id: "macos",
+    label: "macOS",
+    shell: "Terminal",
+    prompt: "$",
+    command: `curl -fsSL ${raw}/install.sh | bash`,
+  },
+];
+---
+
+<div id="install" class="w-full max-w-2xl text-left">
+  <div class="card-border overflow-hidden rounded-2xl shadow-2xl shadow-black/40">
+    <div class="flex items-center justify-between gap-3 border-b border-border bg-surface-2 px-3 py-2">
+      <div class="flex gap-1" role="tablist" aria-label="Sistema operativo">
+        {options.map((o, i) => (
+          <button
+            type="button"
+            role="tab"
+            data-install-tab={o.id}
+            aria-selected={i === 0}
+            class:list={[
+              "install-tab rounded-lg px-3 py-1.5 text-xs font-medium transition-colors",
+              i === 0 ? "bg-white/10 text-text" : "text-muted hover:text-text",
+            ]}
+          >
+            {o.label}
+          </button>
+        ))}
+      </div>
+      <span id="install-shell" class="font-mono text-[11px] text-muted/80">{options[0].shell}</span>
+    </div>
+
+    {options.map((o, i) => (
+      <div data-install-panel={o.id} class:list={["flex items-center gap-3 px-4 py-3.5", i !== 0 && "hidden"]}>
+        <span class="select-none font-mono text-sm text-cyan">{o.prompt}</span>
+        <code class="min-w-0 flex-1 overflow-x-auto whitespace-nowrap font-mono text-[13px] text-text [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+          {o.command}
+        </code>
+        <button
+          type="button"
+          data-copy={o.command}
+          class="copy-btn shrink-0 rounded-lg border border-border px-3 py-1.5 text-xs font-medium text-muted transition-colors hover:border-white/25 hover:text-text"
+          aria-label={`Copiar el comando de instalación para ${o.label}`}
+        >
+          Copiar
+        </button>
+      </div>
+    ))}
+  </div>
+  <p class="mt-3 text-center text-xs text-muted/80">
+    Descarga la última versión, la instala y la abre. Sin permisos de administrador.
+  </p>
+</div>
+
+<script define:vars={{ shells: Object.fromEntries(options.map((o) => [o.id, o.shell])) }}>
+  const tabs = Array.from(document.querySelectorAll("[data-install-tab]"));
+  const panels = Array.from(document.querySelectorAll("[data-install-panel]"));
+  const shell = document.getElementById("install-shell");
+
+  function select(id) {
+    tabs.forEach((t) => {
+      const active = t.dataset.installTab === id;
+      t.setAttribute("aria-selected", String(active));
+      t.classList.toggle("bg-white/10", active);
+      t.classList.toggle("text-text", active);
+      t.classList.toggle("text-muted", !active);
+    });
+    panels.forEach((p) => p.classList.toggle("hidden", p.dataset.installPanel !== id));
+    if (shell) shell.textContent = shells[id] ?? "";
+  }
+
+  tabs.forEach((t) => t.addEventListener("click", () => select(t.dataset.installTab)));
+
+  // Preseleccionar el sistema del visitante.
+  const platform = (navigator.userAgentData?.platform || navigator.platform || "").toLowerCase();
+  if (platform.includes("mac")) select("macos");
+
+  document.querySelectorAll(".copy-btn").forEach((btn) => {
+    btn.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText(btn.dataset.copy);
+        btn.textContent = "Copiado";
+      } catch {
+        btn.textContent = "Selecciona y copia";
+      }
+      setTimeout(() => (btn.textContent = "Copiar"), 1800);
+    });
+  });
+</script>

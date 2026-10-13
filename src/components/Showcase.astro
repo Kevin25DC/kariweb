@@ -95,5 +95,10 @@ const tabs = [
     if (current) activate(current.dataset.tab, { instant: true });
   });
 
-  requestAnimationFrame(() => activate(buttons[0]?.dataset.tab, { instant: true }));
+  activate(buttons[0]?.dataset.tab, { instant: true });
+  // Al cargar la fuente cambia el ancho de los botones: recolocar el indicador.
+  window.addEventListener("load", () => {
+    const current = buttons.find((b) => b.getAttribute("aria-pressed") === "true");
+    if (current) activate(current.dataset.tab, { instant: true });
+  });
 </script>

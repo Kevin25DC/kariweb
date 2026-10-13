@@ -28,8 +28,10 @@
     background: var(--color-bg);
     color-scheme: dark;
     scroll-behavior: smooth;
+    overflow-x: clip;
   }
   body {
+    overflow-x: clip;
     background: var(--color-bg);
     color: var(--color-text);
     font-feature-settings: "ss01" on;

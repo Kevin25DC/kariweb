@@ -1,7 +1,8 @@
 ---
 // Comando de instalación de una línea, con pestañas por sistema operativo.
-// Los scripts viven en el repo de la app (scripts/install.ps1 y install.sh).
-const raw = "https://raw.githubusercontent.com/Kevin25DC/karina-token/main/scripts";
+// Los scripts viven en el repo de la app (scripts/install.ps1 y install.sh);
+// vercel.json los sirve desde este dominio para que el comando quepa en una línea.
+const raw = "https://kariweb.vercel.app";
 const options = [
   {
     id: "windows",
@@ -45,7 +46,7 @@ const options = [
     {options.map((o, i) => (
       <div data-install-panel={o.id} class:list={["flex items-center gap-3 px-4 py-3.5", i !== 0 && "hidden"]}>
         <span class="select-none font-mono text-sm text-cyan">{o.prompt}</span>
-        <code class="min-w-0 flex-1 overflow-x-auto whitespace-nowrap font-mono text-[13px] text-text [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
+        <code class="min-w-0 flex-1 break-all font-mono text-[13px] text-text">
           {o.command}
         </code>
         <button

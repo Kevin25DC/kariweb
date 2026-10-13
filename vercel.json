@@ -1,0 +1,12 @@
+{
+  "rewrites": [
+    {
+      "source": "/install.ps1",
+      "destination": "https://raw.githubusercontent.com/Kevin25DC/karina-token/main/scripts/install.ps1"
+    },
+    {
+      "source": "/install.sh",
+      "destination": "https://raw.githubusercontent.com/Kevin25DC/karina-token/main/scripts/install.sh"
+    }
+  ]
+}
